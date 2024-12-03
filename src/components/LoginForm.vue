@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-form-container">
-      <h2>Login to Your Account</h2>
+      <h2>Login to LMS</h2>
       <form @submit.prevent="loginUser" class="login-form">
         <input 
           type="text" 
@@ -21,9 +21,12 @@
       </form>
       <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
     </div>
+    <router-link to="/signUp" class="form-link">
+        Do you have an account? 
+      </router-link>
 
     <footer class="footer">
-      <p>&copy; 2024 YourCompany. All rights reserved.</p>
+      <p>&copy; 2024 ED-Soft. All rights reserved.</p>
     </footer>
   </div>
 </template>
@@ -43,17 +46,28 @@ export default {
     async loginUser() {
       try {
         const response = await axios.post('http://localhost:9292/user/login', {
-          name: this.name,      // Name ile giriş yapılacak
+          name: this.name,      
           password: this.password,
         });
         console.log(response.data);
+
+        localStorage.setItem('userName',this.name);
 
         // Başarılı giriş sonrası yönlendirme
         this.$router.push({ name: 'Success' }); // Veya istediğiniz başka bir sayfaya yönlendirebilirsiniz
         
       } catch (error) {
         console.error('Error logging in:', error);
-        this.errorMessage = 'Giriş başarısız. Lütfen bilgilerinizi kontrol edin.'; // Kullanıcıya hata mesajı göster
+
+      if (error.response) {
+        if (error.response.status === 404) {
+          this.errorMessage = 'Kullanıcı adı veya şifre yanlış. Lütfen tekrar deneyin.';
+        } else {
+          this.errorMessage = 'Giriş sırasında bir hata oluştu. Lütfen tekrar deneyin.';
+        }
+      } else {
+        this.errorMessage = 'Sunucuya bağlanılamadı. Lütfen internet bağlantınızı kontrol edin.';
+      }
       }
     },
   },

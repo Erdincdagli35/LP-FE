@@ -20,26 +20,30 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 80vh;
-  background: #f4f4f9;
+  justify-content: center; /* Dikey olarak ortala */
+  height: 100vh; /* Tüm ekran yüksekliğini kapla */
+  background: #f4f4f9; /* Arka plan rengi */
   font-family: 'Arial', sans-serif;
 }
 
-.login-header {
-  text-align: center;
-  margin-bottom: 40px;
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  width: 100%; 
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: #2c3e50;
-  margin: 0;
-}
-
-.subheading {
-  font-size: 1.2rem;
-  color: #7f8c8d;
+  margin-bottom: 20px;
 }
 
 .login-actions {
@@ -49,31 +53,24 @@ h2 {
   margin-top: 20px;
 }
 
-/* Modern Textbox Styles */
-input[type="email"], input[type="password"] {
+.input-field {
   width: 100%;
   padding: 14px 20px;
   font-size: 1.1rem;
   margin-bottom: 20px;
   border: 2px solid #ccc;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: #f9f9f9;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box;
 }
 
-input[type="email"]:focus, input[type="password"]:focus {
+.input-field:focus {
   border-color: #3498db;
   outline: none;
   box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
 }
 
-input[type="email"], input[type="password"]::placeholder {
-  color: #b5b5b5;
-}
-
-/* Modern Login Button */
-button[type="submit"] {
+.submit-btn {
   width: 100%;
   padding: 14px 20px;
   font-size: 1.2rem;
@@ -83,28 +80,33 @@ button[type="submit"] {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  box-sizing: border-box;
 }
 
-button[type="submit"]:hover {
+.submit-btn:hover {
   background-color: #2980b9;
   transform: translateY(-2px);
 }
 
-button[type="submit"]:active {
+.submit-btn:active {
   transform: translateY(2px);
 }
 
-/* Link Style */
-.btn-link {
-  color: #3498db;
-  text-decoration: none;
+.error-message {
+  color: red;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  margin-top: 10px;
 }
 
-.btn-link:hover {
-  color: #2980b9;
-  text-decoration: underline;
+.footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #f4f4f9;
+  margin-top: 20px;
 }
+
+.footer p {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
 </style>

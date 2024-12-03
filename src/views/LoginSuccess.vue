@@ -1,17 +1,25 @@
 <template>
   <div class="success-container">
     <h1>Login Successful!</h1>
-    <p>Welcome to the LMS. You will be redirected shortly...</p>
+    <p>Welcome to LMS, {{ userName }}! You will be redirected shortly...</p>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      userName: '', // Kullanıcı adı
+    };
+  },
   mounted() {
+    // Kullanıcı adını localStorage'dan al
+    this.userName = localStorage.getItem('userName');
+
     // Otomatik yönlendirme için timeout
     setTimeout(() => {
-      //this.$router.push({ name: 'LMS' }); // LMS sayfasına yönlendirme
-    }, 3000); // 3 saniye bekle
+      //this.$router.push({  }); // LMS sayfasına yönlendirme
+    }, 3000);
   },
 };
 </script>

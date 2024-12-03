@@ -26,7 +26,7 @@
     </div>
 
     <footer class="footer">
-      <p>&copy; 2024 YourCompany. All rights reserved.</p>
+      <p>&copy; 2024 ED-Soft. All rights reserved.</p>
     </footer>
   </div>
 </template>
